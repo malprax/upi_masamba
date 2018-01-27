@@ -1,0 +1,2 @@
+class Dusun < ApplicationRecord
+end

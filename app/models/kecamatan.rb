@@ -1,0 +1,2 @@
+class Kecamatan < ApplicationRecord
+end

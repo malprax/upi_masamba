@@ -10,7 +10,7 @@ ruby "2.4.2"
 gem 'rails', '~> 5.1.4'
 
 #postgres database
-gem 'pg'
+gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -116,7 +116,7 @@ gem 'json'
 gem 'figaro'
 
 #gem strong_migrations
-gem 'strong_migrations'
+# gem 'strong_migrations'
 
 #excel
 gem 'rubyzip', '~> 1.1.0'

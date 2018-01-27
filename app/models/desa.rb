@@ -1,0 +1,2 @@
+class Desa < ApplicationRecord
+end

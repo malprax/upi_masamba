@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pemilik: MyString
+  jenis: MyString
+  tahun: MyString
+  lantai: MyString
+  luas: MyString
+  jenis_jalan: MyString
+  ada_sertifikat: MyString
+  ada_imb: MyString
+  notes: MyString
+
+two:
+  pemilik: MyString
+  jenis: MyString
+  tahun: MyString
+  lantai: MyString
+  luas: MyString
+  jenis_jalan: MyString
+  ada_sertifikat: MyString
+  ada_imb: MyString
+  notes: MyString

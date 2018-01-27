@@ -1,0 +1,2 @@
+class Kelurahan < ApplicationRecord
+end

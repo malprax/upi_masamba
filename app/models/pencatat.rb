@@ -1,0 +1,2 @@
+class Pencatat < ApplicationRecord
+end
