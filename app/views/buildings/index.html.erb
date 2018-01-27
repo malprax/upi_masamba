@@ -1,21 +1,51 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Nama Pemilik Bangunan</th>
-      <th>Jenis Bangunan</th>
-      <th>Tahun Bangunan</th>
-      <th>Jumlah Lantai</th>
-      <th>Luas Bangunan(m2)</th>
-      <th>Jenis Jalan(m2)</th>
-      <th>Sertifikat Tanah</th>
-      <th>IMB</th>
-      <th>KET</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-12 mx-auto">
+  <h3 class="lead">Data Bangunan Tahun 2017</h3>
+</div>
+<div class="col-12">
+  <table class="table table condensed table-bordered">
+      <thead>
+        <tr>
+          <th class="lead " rowspan="2">No</th>
+          <th class="lead" rowspan="2">Nama Pemilik</th>
+          <th class="lead" colspan="3">Jenis</th>
+          <th class="lead" rowspan="2">Tahun</th>
+          <th class="lead" rowspan="2">Jumlah Lantai</th>
+          <th class="lead" colspan="5">Luas(m2)</th>
+          <th class="lead" rowspan="2">Jenis Jalan(m2)</th>
+          <th class="lead" colspan="2">Sertifikat Tanah</th>
+          <th class="lead" colspan="2">IMB</th>
+          <th class="lead" rowspan="2" colspan="3">KET</th>
+        </tr>
+        <tr>
+          <th class="lead">P</th>
+          <th class="lead">SP</th>
+          <th class="lead">DR</th>
+          <th class="lead">RMH TGL</th>
+          <th class="lead">RUKO</th>
+          <th class="lead">KANTOR</th>
+          <th class="lead">GDG</th>
+          <th class="lead">DLL</th>
+          <th class="lead">ADA</th>
+          <th class="lead">TDK</th>
+          <th class="lead">ADA</th>
+          <th class="lead">TDK</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @buildings.each_with_index do |building, i| %>
+        <tr>
+          <td><%= i = i + 1 %></td>
+          <td><%= building.pemilik %></td>
+          <td><%= building.jenis %></td>
+          <td><%= building.tahun %></td>
+          <td><%= building.lantai %></td>
+          <td><%= building.luas %></td>
+          <td><%= building.jenis_jalan %></td>
+          <td><%= building.ada_sertifikat %></td>
+          <td><%= building.ada_imb %></td>
+          <td><%= building.notes %></td>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>
