@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <%= simple_form_for @building do |f| %>
+      <%= f.input :pemilik %>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to "Kembali", buildings_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

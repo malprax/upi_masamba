@@ -1,51 +1,72 @@
 <div class="col-12 mx-auto">
-  <h3 class="lead">Data Bangunan Tahun 2017</h3>
+  <h5 class="text-center">Data Bangunan Tahun 2017&nbsp;&nbsp;<%= link_to icon_plus(""), new_building_path %></h5>
 </div>
 <div class="col-12">
   <table class="table table condensed table-bordered">
       <thead>
         <tr>
-          <th class="lead " rowspan="2">No</th>
-          <th class="lead" rowspan="2">Nama Pemilik</th>
-          <th class="lead" colspan="3">Jenis</th>
-          <th class="lead" rowspan="2">Tahun</th>
-          <th class="lead" rowspan="2">Jumlah Lantai</th>
-          <th class="lead" colspan="5">Luas(m2)</th>
-          <th class="lead" rowspan="2">Jenis Jalan(m2)</th>
-          <th class="lead" colspan="2">Sertifikat Tanah</th>
-          <th class="lead" colspan="2">IMB</th>
-          <th class="lead" rowspan="2" colspan="3">KET</th>
+          <th class="lead text-center" rowspan="2">No</th>
+          <th class="lead text-center" rowspan="2">Nama Pemilik</th>
+          <th class="lead text-center" colspan="3">Jenis Bangunan</th>
+          <th class="lead text-center" rowspan="2">Tahun</th>
+          <th class="lead text-center" rowspan="2">Jumlah Lantai</th>
+          <th class="lead text-center" colspan="5">Luas Bangunan(m2)</th>
+          <th class="lead text-center" rowspan="2">Jenis Jalan(m2)</th>
+          <th class="lead text-center" colspan="2">Sertifikat Tanah</th>
+          <th class="lead text-center" colspan="2">IMB</th>
+          <th class="lead text-center" rowspan="2" colspan="3">KET</th>
         </tr>
         <tr>
-          <th class="lead">P</th>
-          <th class="lead">SP</th>
-          <th class="lead">DR</th>
-          <th class="lead">RMH TGL</th>
-          <th class="lead">RUKO</th>
-          <th class="lead">KANTOR</th>
-          <th class="lead">GDG</th>
-          <th class="lead">DLL</th>
-          <th class="lead">ADA</th>
-          <th class="lead">TDK</th>
-          <th class="lead">ADA</th>
-          <th class="lead">TDK</th>
+          <th class="lead text-center">P</th>
+          <th class="lead text-center">SP</th>
+          <th class="lead text-center">DR</th>
+          <th class="lead text-center">RMH TGL</th>
+          <th class="lead text-center">RUKO</th>
+          <th class="lead text-center">KANTOR</th>
+          <th class="lead text-center">GDG</th>
+          <th class="lead text-center">DLL</th>
+          <th class="lead text-center">ADA</th>
+          <th class="lead text-center">TDK</th>
+          <th class="lead text-center">ADA</th>
+          <th class="lead text-center">TDK</th>
         </tr>
       </thead>
       <tbody>
+        <% if params[:page].nil? || params[:page]== "0" || params[:page]=="1" %>
+          <% x = 0 %>
+        <% else %>
+          <% page = params[:page].to_i - 1 %>
+          <% x = page*10 %>
+        <% end %>
         <% @buildings.each_with_index do |building, i| %>
         <tr>
-          <td><%= i = i + 1 %></td>
-          <td><%= building.pemilik %></td>
-          <td><%= building.jenis %></td>
-          <td><%= building.tahun %></td>
-          <td><%= building.lantai %></td>
-          <td><%= building.luas %></td>
-          <td><%= building.jenis_jalan %></td>
-          <td><%= building.ada_sertifikat %></td>
-          <td><%= building.ada_imb %></td>
-          <td><%= building.notes %></td>
+          <td class="lead text-center"><%= i = i + x + 1 %></td>
+          <td class="lead text-left"><%= link_to building.pemilik, edit_building_path(building) %></td>
+          <td class="lead text-center">P</td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center">1984</td>
+          <td class="lead text-center">2</td>
+          <td class="lead text-center">100</td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center">Jalan Desa</td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center">Tidak</td>
+          <td class="lead text-center"></td>
+          <td class="lead text-center">Tidak</td>
+          <td class="lead text-center">Keterangan</td>
         </tr>
         <% end %>
       </tbody>
   </table>
+</div>
+<div class="col-12">
+  <%= link_to "Download",buildings_path(format: :xlsx), class: "btn btn-success" %>
+  <%= link_to "Upload", "#", class: "btn btn-secondary" %>
+</div>
+<div class="col-12">
+  <%= paginate @buildings %>
 </div>
