@@ -1,6 +1,58 @@
 class Building < ApplicationRecord
   scope :cari_pemilik, -> (query){where("lower(pemilik) like lower(?) ", "%#{query}%")}
 
+  attr_accessor :permanen, :semi_permanen, :darurat, :rumah_tinggal, :ruko, :kantor, :gudang, :dan_lain_lain, :ada_sertifikat_tanah, :tidak_ada_sertifikat_tanah, :ada_imb_bangunan, :tidak_ada_imb_bangunan
+
+  def ada_imb_bangunan
+    self.ada_imb = "ADA" if self.ada_imb == true
+  end
+
+  def tidak_ada_imb_bangunan
+    self.ada_imb = "TDK" if self.ada_imb == false
+  end
+
+  def ada_sertifikat_tanah
+    self.ada_sertifikat_tanah = "ADA" if self.ada_sertifikat == true
+  end
+
+  def tidak_ada_sertifikat_tanah
+    self.tidak_ada_sertifikat_tanah = "TDK" if self.ada_sertifikat == false
+  end
+
+
+
+  def permanen
+      self.permanen = "P" if self.jenis == "Permanen"
+  end
+
+  def semi_permanen
+      self.semi_permanen = "SP" if self.jenis == "Semi Permanen"
+  end
+
+  def darurat
+      self.darurat = "DR" if self.jenis == "Darurat"
+  end
+
+  def rumah_tinggal
+    self.luas if self.fungsi == "Rumah Tinggal"
+  end
+
+  def ruko
+    self.luas if self.fungsi == "Ruko"
+  end
+
+  def kantor
+    self.luas if self.fungsi == "Kantor"
+  end
+
+  def gudang
+    self.luas if self.fungsi == "Gudang"
+  end
+
+  def dan_lain_lain
+    self.luas if self.fungsi == "Dll"
+  end
+
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
     # header = spreadsheet.row(1)

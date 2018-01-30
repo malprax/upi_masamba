@@ -42,21 +42,21 @@
         <tr>
           <td class="lead text-center"><%= i = i + x + 1 %></td>
           <td class="lead text-left"><%= link_to building.pemilik, edit_building_path(building) %></td>
-          <td class="lead text-center"><%= "P" if building.jenis == "Permanen" %></td>
-          <td class="lead text-center"><%= "SP" if building.jenis == "Semi Permanen" %></td>
-          <td class="lead text-center"><%= "DR" if building.jenis == "Darurat" %></td>
+          <td class="lead text-center"><%= building.permanen %></td>
+          <td class="lead text-center"><%= building.semi_permanen %></td>
+          <td class="lead text-center"><%= building.darurat %></td>
           <td class="lead text-center"><%= building.tahun %></td>
           <td class="lead text-center"><%= building.lantai %></td>
-          <td class="lead text-center"><%= building.luas if building.fungsi == "Rumah Tinggal" %></td>
-          <td class="lead text-center"><%= building.luas if building.fungsi == "Ruko" %></td>
-          <td class="lead text-center"><%= building.luas if building.fungsi == "Kantor" %></td>
-          <td class="lead text-center"><%= building.luas if building.fungsi == "Gudang" %></td>
-          <td class="lead text-center"><%= building.luas if building.fungsi == "Dll" %></td>
+          <td class="lead text-center"><%= building.rumah_tinggal %></td>
+          <td class="lead text-center"><%= building.ruko %></td>
+          <td class="lead text-center"><%= building.kantor %></td>
+          <td class="lead text-center"><%= building.gudang %></td>
+          <td class="lead text-center"><%= building.dan_lain_lain %></td>
           <td class="lead text-center"><%= building.jenis_jalan %></td>
-          <td class="lead text-center"><%= building.ada_sertifikat == true ? "ADA" : "" %></td>
-          <td class="lead text-center"><%= building.ada_sertifikat == true ? "" : "TDK" %></td>
-          <td class="lead text-center"><%= building.ada_imb == true ? "ADA" : "" %></td>
-          <td class="lead text-center"><%= building.ada_imb == true ? "" : "TDK" %></td>
+          <td class="lead text-center"><%= building.ada_sertifikat_tanah %></td>
+          <td class="lead text-center"><%= building.tidak_ada_sertifikat_tanah %></td>
+          <td class="lead text-center"><%= building.ada_imb_bangunan %></td>
+          <td class="lead text-center"><%= building.tidak_ada_imb_bangunan %></td>
           <td class="lead text-center"><%= building.notes %></td>
         </tr>
         <% end %>
