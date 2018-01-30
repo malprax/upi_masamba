@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20180127081726) do
     t.string "jenis"
     t.string "tahun"
     t.string "lantai"
+    t.string "fungsi"
     t.string "luas"
     t.string "jenis_jalan"
     t.boolean "ada_sertifikat"
+    t.string "tahun_sertifikat"
     t.boolean "ada_imb"
     t.string "notes"
     t.integer "desa_id"
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180127081726) do
     t.integer "kecamatan_id"
     t.integer "kelurahan_id"
     t.integer "dusun_id"
+    t.string "foto_lokasi"
     t.integer "pencatat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -124,4 +124,4 @@ gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
 
 #upload excel
-gem "roo", "~> 2.7.0"
+gem "roo"

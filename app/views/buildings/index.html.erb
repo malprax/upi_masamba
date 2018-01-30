@@ -42,30 +42,41 @@
         <tr>
           <td class="lead text-center"><%= i = i + x + 1 %></td>
           <td class="lead text-left"><%= link_to building.pemilik, edit_building_path(building) %></td>
-          <td class="lead text-center">P</td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center">1984</td>
-          <td class="lead text-center">2</td>
+          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "P" %></td>
+          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "SP" %></td>
+          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "DR" %></td>
+          <td class="lead text-center"><%= building.tahun %></td>
+          <td class="lead text-center"><%= building.lantai %></td>
           <td class="lead text-center">100</td>
           <td class="lead text-center"></td>
           <td class="lead text-center"></td>
           <td class="lead text-center"></td>
           <td class="lead text-center"></td>
-          <td class="lead text-center">Jalan Desa</td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center">Tidak</td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center">Tidak</td>
-          <td class="lead text-center">Keterangan</td>
+          <td class="lead text-center"><%= building.jenis_jalan %></td>
+          <td class="lead text-center"><%= building.ada_sertifikat == true ? "ADA" : "" %></td>
+          <td class="lead text-center"><%= building.ada_sertifikat == true ? "" : "TDK" %></td>
+          <td class="lead text-center"><%= building.ada_imb == true ? "ADA" : "" %></td>
+          <td class="lead text-center"><%= building.ada_imb == true ? "" : "TDK" %></td>
+          <td class="lead text-center"><%= building.notes %></td>
         </tr>
         <% end %>
       </tbody>
   </table>
 </div>
 <div class="col-12">
+  <!-- <%#= form_tag import_buildings_path, multipart: true do  %>
+    <label class="btn btn-secondary">
+      Upload
+      <span style="display:none;">
+        <%#= file_field_tag :file, as: :hidden %>
+      </span>
+    </label>
+  <%# end %> -->
   <%= link_to "Download",buildings_path(format: :xlsx), class: "btn btn-success" %>
-  <%= link_to "Upload", "#", class: "btn btn-secondary" %>
+  <%= form_tag import_buildings_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
 </div>
 <div class="col-12">
   <%= paginate @buildings %>

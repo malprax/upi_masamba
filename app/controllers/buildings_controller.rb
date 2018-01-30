@@ -1,5 +1,11 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: [:edit, :update, :destroy]
+
+  def import
+    Building.import(params[:file])
+    redirect_to root_url, notice: "Data Berhasil Diupload"
+  end
+
   def index
     @buildings = Building.order(:created_at).page(params[:page]).per(10)
     @buildings = @buildings.cari_pemilik(params[:cari_pemilik])

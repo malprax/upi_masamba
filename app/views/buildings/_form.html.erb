@@ -1,9 +1,27 @@
 <div class="container">
-  <div class="row">
-    <%= simple_form_for @building do |f| %>
-      <%= f.input :pemilik %>
-      <%= f.submit class: "btn btn-primary" %>
-      <%= link_to "Kembali", buildings_path, class: "btn btn-success" %>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <% if params[:action] == "new" %>
+        <h5>Buat Data</h5><hr />
+      <% else %>
+        <h5>Edit Data</h5><hr />
+      <% end %>
+    </div>
+    <div class="col-8">
+      <%= simple_form_for @building do |f| %>
+        <%= f.input :pemilik %>
+        <%= f.input :jenis, collection: ["Permanen", "Semi Permanen", "Darurat"] %>
+        <%= f.input :tahun %>
+        <%= f.input :lantai, label: "Jumlah Lantai" %>
+        <%= f.input :luas, label: "Luas Bangunan" %>
+        <%= f.input :jenis_jalan, collection: ["Jalan Nasional", "Jalan Provinsi", "Jalan Kabupaten", "Jalan Kota", "Jalan Desa"] %>
+        <%= f.input :ada_sertifikat, label: "Ada Sertifikat", as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.input :ada_imb, label: "Ada IMB", as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.input :notes, label: "Keterangan" %>
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to "Kembali", buildings_path, class: "btn btn-success" %>
+      <% end %>
+    </div>
+
   </div>
 </div>

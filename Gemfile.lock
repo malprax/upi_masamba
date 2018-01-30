@@ -366,7 +366,7 @@ DEPENDENCIES
   prawn-table (~> 0.2.2)
   puma (~> 3.7)
   rails (~> 5.1.4)
-  roo (~> 2.7.0)
+  roo
   rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
