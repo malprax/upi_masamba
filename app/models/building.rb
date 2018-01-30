@@ -1,18 +1,6 @@
 class Building < ApplicationRecord
   scope :cari_pemilik, -> (query){where("lower(pemilik) like lower(?) ", "%#{query}%")}
 
-  attr_accessor :jenis_bangunan
-
-  def jenis_bangunan
-      if self.jenis == "Permanen"
-        self.jenis_bangunan = "P"
-      elsif self.jenis == "Semi Permanen"
-        self.jenis_bangunan = "SP"
-      elsif self.jenis == "Darurat"
-        self.jenis_bangunan = "DR"
-      end
-  end
-
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
     # header = spreadsheet.row(1)

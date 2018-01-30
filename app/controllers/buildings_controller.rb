@@ -55,6 +55,6 @@ class BuildingsController < ApplicationController
     @building = Building.find(params[:id])
   end
   def building_params
-    params.require(:building).permit(:pemilik, :jenis, :tahun, :lantai, :luas, :jenis_jalan, :ada_sertifikat, :ada_imb, :notes, :desa_id, :year_id, :kecamatan_id, :kelurahan_id, :dusun_id, :pencatat_id)
+    params.require(:building).permit(:pemilik, :jenis, :tahun, :lantai, :fungsi, :luas, :jenis_jalan, :ada_sertifikat, :tahun_sertifikat, :ada_imb, :notes, :desa_id, :year_id, :kecamatan_id, :kelurahan_id, :dusun_id, :pencatat_id, :foto_lokasi)
   end
 end

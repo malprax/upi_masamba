@@ -13,6 +13,7 @@
         <%= f.input :jenis, collection: ["Permanen", "Semi Permanen", "Darurat"] %>
         <%= f.input :tahun %>
         <%= f.input :lantai, label: "Jumlah Lantai" %>
+        <%= f.input :fungsi, label: "Fungsi Bangunan", collection: ["Rumah Tinggal", "Ruko", "Kantor", "Gudang", "Dll"] %>
         <%= f.input :luas, label: "Luas Bangunan" %>
         <%= f.input :jenis_jalan, collection: ["Jalan Nasional", "Jalan Provinsi", "Jalan Kabupaten", "Jalan Kota", "Jalan Desa"] %>
         <%= f.input :ada_sertifikat, label: "Ada Sertifikat", as: :boolean, checked_value: true, unchecked_value: false %>

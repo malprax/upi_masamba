@@ -1,5 +1,5 @@
 <div class="col-12 mx-auto">
-  <h5 class="text-center">Data Bangunan Tahun 2017&nbsp;&nbsp;<%= link_to icon_plus(""), new_building_path %></h5>
+    <h5 class="text-center">Data Bangunan Tahun 2017&nbsp;&nbsp;<%= link_to icon_plus(""), new_building_path %></h5>
 </div>
 <div class="col-12">
   <table class="table table condensed table-bordered">
@@ -42,16 +42,16 @@
         <tr>
           <td class="lead text-center"><%= i = i + x + 1 %></td>
           <td class="lead text-left"><%= link_to building.pemilik, edit_building_path(building) %></td>
-          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "P" %></td>
-          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "SP" %></td>
-          <td class="lead text-center"><%= building.jenis_bangunan if building.jenis_bangunan == "DR" %></td>
+          <td class="lead text-center"><%= "P" if building.jenis == "Permanen" %></td>
+          <td class="lead text-center"><%= "SP" if building.jenis == "Semi Permanen" %></td>
+          <td class="lead text-center"><%= "DR" if building.jenis == "Darurat" %></td>
           <td class="lead text-center"><%= building.tahun %></td>
           <td class="lead text-center"><%= building.lantai %></td>
-          <td class="lead text-center">100</td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center"></td>
-          <td class="lead text-center"></td>
+          <td class="lead text-center"><%= building.luas if building.fungsi == "Rumah Tinggal" %></td>
+          <td class="lead text-center"><%= building.luas if building.fungsi == "Ruko" %></td>
+          <td class="lead text-center"><%= building.luas if building.fungsi == "Kantor" %></td>
+          <td class="lead text-center"><%= building.luas if building.fungsi == "Gudang" %></td>
+          <td class="lead text-center"><%= building.luas if building.fungsi == "Dll" %></td>
           <td class="lead text-center"><%= building.jenis_jalan %></td>
           <td class="lead text-center"><%= building.ada_sertifikat == true ? "ADA" : "" %></td>
           <td class="lead text-center"><%= building.ada_sertifikat == true ? "" : "TDK" %></td>
