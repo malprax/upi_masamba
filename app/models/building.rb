@@ -19,8 +19,6 @@ class Building < ApplicationRecord
     self.tidak_ada_sertifikat_tanah = "TDK" if self.ada_sertifikat == false
   end
 
-
-
   def permanen
       self.permanen = "P" if self.jenis == "Permanen"
   end

@@ -1,10 +1,10 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Data Penduduk") do |sheet|
   # this is the head row of your spreadsheet
-  #sheet.add_row %w(pemilik)
+  sheet.add_row %w(Pemilik P SP DR Tahun Lantai RMH RUKO KANTOR GDG DLL Jenis Jalan ADA TDK ADA TDK KET)
 
   # each user is a row on your spreadsheet
   @buildings.each do |build|
-    sheet.add_row [build.pemilik]
+    sheet.add_row [build.pemilik, build.permanen, build.semi_permanen, build.darurat, build.tahun, build.lantai, build.rumah_tinggal, build.ruko, build.kantor, build.gudang, build.dan_lain_lain, build.jenis_jalan, build.ada_sertifikat_tanah, build.tidak_ada_sertifikat_tanah, build.ada_imb_bangunan, build.tidak_ada_imb_bangunan, build.notes]
   end
 end
