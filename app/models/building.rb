@@ -53,23 +53,24 @@ class Building < ApplicationRecord
 
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
-    # header = spreadsheet.row(1)
+    header = spreadsheet.row(2)
+    # header2 = spreadsheet.row(2)
     (2..spreadsheet.last_row).each do |i|
-      row = Hash[[spreadsheet.row(i)].transpose]
-      building = find_by(id: row["id"]) || new
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      building = find_by(id:1) || new
       building.attributes = row.to_hash
       building.save!
     end
   end
 
-  def self.open_spreadsheet(file)
-    case File.extname(file.original_filename)
-    when ".csv" then Roo::CSV.new(file.path, nil, :ignore)
-    when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-    when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
-    else raise "Unknown file type: #{file.original_filename}"
-    end
-  end
+  # def self.open_spreadsheet(file)
+  #   case File.extname(file.original_filename)
+  #   when ".csv" then Roo::CSV.new(file.path, nil, :ignore)
+  #   when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
+  #   when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+  #   else raise "Unknown file type: #{file.original_filename}"
+  #   end
+  # end
 end
 
 # where("lower(pemilik) like lower(?) or lower(email) like lower(?) or stambuk like ? ", "%#{query}%", "%#{query}%", "%#{query}%")
