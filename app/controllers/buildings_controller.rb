@@ -11,7 +11,9 @@ class BuildingsController < ApplicationController
     @buildings = @buildings.cari_pemilik(params[:cari_pemilik])
     respond_to do |format|
       format.html
-      format.xlsx
+      # format.xlsx
+      format.xls
+      format.csv{send_data @buildings}
     end
   end
 
