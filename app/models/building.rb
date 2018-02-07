@@ -4,6 +4,18 @@ class Building < ApplicationRecord
 
   attr_accessor :permanen, :semi_permanen, :darurat, :rumah_tinggal, :ruko, :kantor, :gudang, :dan_lain_lain, :ada_sertifikat_tanah, :tidak_ada_sertifikat_tanah, :ada_imb_bangunan, :tidak_ada_imb_bangunan
 
+  def self.import(file)
+    spreadsheet = Roo::Spreadsheet.open(file.path)
+    header = spreadsheet.row(1)
+    # header2 = spreadsheet.row(2)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      building = find_by(id:row["id"]) || new
+      building.attributes = row.to_hash
+      building.save!
+    end
+  end
+
   def self.to_csv(options={})
     desired_columns = ["id", "pemilik", "created_at"]
     CSV.generate(options) do |csv|
@@ -13,6 +25,7 @@ class Building < ApplicationRecord
       end
     end
   end
+
   def ada_imb_bangunan
     self.ada_imb = "ADA" if self.ada_imb == true
   end
@@ -59,18 +72,6 @@ class Building < ApplicationRecord
 
   def dan_lain_lain
     self.luas if self.fungsi == "Dll"
-  end
-
-  def self.import(file)
-    spreadsheet = Roo::Spreadsheet.open(file.path)
-    header = spreadsheet.row(1)
-    # header2 = spreadsheet.row(2)
-    (2..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      building = find_by(id:row["NO"]) || new
-      building.attributes = row.to_hash
-      building.save!
-    end
   end
 
   # def self.open_spreadsheet(file)

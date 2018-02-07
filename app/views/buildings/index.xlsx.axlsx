@@ -10,25 +10,27 @@ wb.styles do |s|
                                             :wrap_text => false}
     wb.add_worksheet(name: "Data Penduduk") do |sheet|
       # this is the head1 row of your spreadsheet
-      sheet.add_row ["NO","NAMA PEMILIK BANGUNAN","JENIS BANGUNAN","","","TAHUN BANGUNAN","JUMLAH LT","LUAS BANGUNAN","","","","","JENIS JALAN","SERTIFIKAT TANAH","","IMB","","KET"], style: wrap_text_for_header
+      #sheet.add_row ["NO","NAMA PEMILIK BANGUNAN","JENIS BANGUNAN","","","TAHUN BANGUNAN","JUMLAH LT","LUAS BANGUNAN","","","","","JENIS JALAN","SERTIFIKAT TANAH","","IMB","","KET"], style: wrap_text_for_header
+      sheet.add_row ["ID","NAMA PEMILIK BANGUNAN"], style: wrap_text_for_header
       # this is the head2 row of your spreadsheet
-      sheet.add_row ["","","P","SP","DR","","","RMH TGL","RUKO","KANTOR","GDG","DLL","","ADA","TDK","ADA","TDK",""], style: wrap_text_for_header
-      sheet.merge_cells("A1:A2") #nama pemilik bangunan
-      sheet.merge_cells("B1:B2") #nama pemilik bangunan
-      sheet.merge_cells("C1:E1") #jenis bangunan
-      sheet.merge_cells("F1:F2") #tahun bangunan
-      sheet.merge_cells("G1:G2") #jumlah lantai
-      sheet.merge_cells("H1:L1") #luas bangunan
-      sheet.merge_cells("M1:M2") #jenis jalan
-      sheet.merge_cells("N1:O1") #sertifikat
-      sheet.merge_cells("P1:Q1") #imb
-      sheet.merge_cells("R1:R2") #keterangan
-      sheet.column_widths 4, nil, 4, 4, 4, nil, nil, 10, 10, 10, 10, 10, 18, 5, 5, 5, 5, 14
+      #sheet.add_row ["","","P","SP","DR","","","RMH TGL","RUKO","KANTOR","GDG","DLL","","ADA","TDK","ADA","TDK",""], style: wrap_text_for_header
+      #sheet.merge_cells("A1:A2") #nama pemilik bangunan
+      #sheet.merge_cells("B1:B2") #nama pemilik bangunan
+      #sheet.merge_cells("C1:E1") #jenis bangunan
+      #sheet.merge_cells("F1:F2") #tahun bangunan
+      #sheet.merge_cells("G1:G2") #jumlah lantai
+      #sheet.merge_cells("H1:L1") #luas bangunan
+      #sheet.merge_cells("M1:M2") #jenis jalan
+      #sheet.merge_cells("N1:O1") #sertifikat
+      #sheet.merge_cells("P1:Q1") #imb
+      #sheet.merge_cells("R1:R2") #keterangan
+      #sheet.column_widths 4, nil, 4, 4, 4, nil, nil, 10, 10, 10, 10, 10, 18, 5, 5, 5, 5, 14
 
       # each user is a row on your spreadsheet
       @buildings.each_with_index do |build, i|
         i = i + 1
-        sheet.add_row [i, build.pemilik, build.permanen, build.semi_permanen, build.darurat, build.tahun, build.lantai, build.rumah_tinggal, build.ruko, build.kantor, build.gudang, build.dan_lain_lain, build.jenis_jalan, build.ada_sertifikat_tanah, build.tidak_ada_sertifikat_tanah, build.ada_imb_bangunan, build.tidak_ada_imb_bangunan, build.notes], style: wrap_text_for_body
+        #sheet.add_row [build.id, build.pemilik, build.permanen, build.semi_permanen, build.darurat, build.tahun, build.lantai, build.rumah_tinggal, build.ruko, build.kantor, build.gudang, build.dan_lain_lain, build.jenis_jalan, build.ada_sertifikat_tanah, build.tidak_ada_sertifikat_tanah, build.ada_imb_bangunan, build.tidak_ada_imb_bangunan, build.notes], style: wrap_text_for_body
+        sheet.add_row [build.id, build.pemilik], style: wrap_text_for_body
       end
     end
 end
