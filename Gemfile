@@ -125,3 +125,4 @@ gem 'axlsx_rails'
 
 #upload excel
 gem "roo"
+gem "roo-xls"

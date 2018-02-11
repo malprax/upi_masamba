@@ -8,12 +8,10 @@ class Building < ApplicationRecord
     spreadsheet = Roo::Spreadsheet.open(file.path)
     # spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
-    # header2 = spreadsheet.row(2)
     (2..spreadsheet.last_row).each do |i|
-      # row = Hash[[header, spreadsheet.row(i)].transpose]
-      # building = find_by(id: row["id"]) || new
-      building = find_by(id: i) || new
-      # building.attributes = row.to_hash
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      building = find_by_id(row["id"]) || new
+      building.attributes = row.to_hash
       building.attributes = spreadsheet.row(i).to_hash
       building.save!
     end
