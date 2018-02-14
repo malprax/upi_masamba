@@ -5,13 +5,14 @@ class Building < ApplicationRecord
   attr_accessor :permanen, :semi_permanen, :darurat, :rumah_tinggal, :ruko, :kantor, :gudang, :dan_lain_lain, :ada_sertifikat_tanah, :tidak_ada_sertifikat_tanah, :ada_imb_bangunan, :tidak_ada_imb_bangunan
 
   def self.import(file)
-    spreadsheet = Roo::Spreadsheet.open(file.path)
-    # spreadsheet = open_spreadsheet(file)
+    # spreadsheet = Roo::Spreadsheet.open(file.path)
+    desired_columns = ["id", "pemilik"]
+    spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       building = find_by_id(row["id"]) || new
-      building.attributes = row.to_hash
+      building.attributes = row.to_hash.select{|k, v| desired_columns.include? k}
       building.attributes = spreadsheet.row(i).to_hash
       building.save!
     end

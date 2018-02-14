@@ -14,7 +14,8 @@
           <th class="lead text-center" rowspan="2">Jenis Jalan(m2)</th>
           <th class="lead text-center" colspan="2">Sertifikat Tanah</th>
           <th class="lead text-center" colspan="2">IMB</th>
-          <th class="lead text-center" rowspan="2" colspan="3">KET</th>
+          <th class="lead text-center" rowspan="2">KET</th>
+          <th class="lead text-center" rowspan="2" colspan="2" >Aksi</th>
         </tr>
         <tr>
           <th class="lead text-center">P</th>
@@ -58,6 +59,8 @@
           <td class="lead text-center"><%= building.ada_imb_bangunan %></td>
           <td class="lead text-center"><%= building.tidak_ada_imb_bangunan %></td>
           <td class="lead text-center"><%= building.notes %></td>
+          <td class="lead text-center"><%= link_to "edit", edit_building_path(building) %></td>
+          <td class="lead text-center"><%= link_to "hapus", building_path(building), method: :delete, data:{confirm: "Anda Yakin Hapus?"} %></td>
         </tr>
         <% end %>
       </tbody>
@@ -69,14 +72,6 @@
     <%= link_to "CSV", buildings_path(format: "csv") %> |
     <%= link_to "Excel", buildings_path(format: "xlsx") %>
   </p>
-  <!-- <%#= form_tag import_buildings_path, multipart: true do  %>
-    <label class="btn btn-secondary">
-      Upload
-      <span style="display:none;">
-        <%#= file_field_tag :file, as: :hidden %>
-      </span>
-    </label>
-  <%# end %> -->
   <%= link_to "Download",buildings_path(format: :xlsx), class: "btn btn-success" %>
   <%= form_tag import_buildings_path, multipart: true do %>
     <%= file_field_tag :file %>

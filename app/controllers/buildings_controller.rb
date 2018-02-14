@@ -47,7 +47,7 @@ class BuildingsController < ApplicationController
   def destroy
     @building.delete
     respond_to do |format|
-      format.html {redirect_to buildings_path, notice: "Data Berhasil Dibuat"}
+      format.html {redirect_to buildings_path, notice: "Data Berhasil Dihapus"}
     end
   end
 
