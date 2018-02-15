@@ -28,11 +28,11 @@ class Building < ApplicationRecord
   end
 
   def self.to_csv(options={})
-    desired_columns = ["id", "pemilik", "created_at"]
+    # desired_columns = ["id", "pemilik", "created_at"]
     CSV.generate(options) do |csv|
       csv << desired_columns
       all.each do |building|
-        csv << building.attributes.values_at(*desired_columns)
+        csv << building.attributes.values
       end
     end
   end

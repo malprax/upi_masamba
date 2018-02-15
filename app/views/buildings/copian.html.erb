@@ -5,25 +5,31 @@
   <table class="table table condensed table-bordered">
       <thead>
         <tr>
-          <th>No</th>
-          <th>Pemilik</th>
-          <th>Permanen</th>
-          <th>Semi</th>
-          <th>Darurat</th>
-          <th>Tahun</th>
-          <th>Lantai</th>
-          <th>Rumah</th>
-          <th>Ruko</th>
-          <th>Kantor</th>
-          <th>Gudang</th>
-          <th>Dll</th>
-          <th>Jalan</th>
-          <th>Ada Sertifikat</th>
-          <th>Tdk Sertifikat</th>
-          <th>Ada IMB</th>
-          <th>Tdk IMB</th>
-          <th>Ket</th>
-          <th>Aksi</th>
+          <th class="lead text-center" rowspan="2">No</th>
+          <th class="lead text-center" rowspan="2">Nama Pemilik</th>
+          <th class="lead text-center" colspan="3">Jenis Bangunan</th>
+          <th class="lead text-center" rowspan="2">Tahun</th>
+          <th class="lead text-center" rowspan="2">Jumlah Lantai</th>
+          <th class="lead text-center" colspan="5">Luas Bangunan(m2)</th>
+          <th class="lead text-center" rowspan="2">Jenis Jalan(m2)</th>
+          <th class="lead text-center" colspan="2">Sertifikat Tanah</th>
+          <th class="lead text-center" colspan="2">IMB</th>
+          <th class="lead text-center" rowspan="2">KET</th>
+          <th class="lead text-center" rowspan="2" colspan="2" >Aksi</th>
+        </tr>
+        <tr>
+          <th class="lead text-center">P</th>
+          <th class="lead text-center">SP</th>
+          <th class="lead text-center">DR</th>
+          <th class="lead text-center">RMH TGL</th>
+          <th class="lead text-center">RUKO</th>
+          <th class="lead text-center">KANTOR</th>
+          <th class="lead text-center">GDG</th>
+          <th class="lead text-center">DLL</th>
+          <th class="lead text-center">ADA</th>
+          <th class="lead text-center">TDK</th>
+          <th class="lead text-center">ADA</th>
+          <th class="lead text-center">TDK</th>
         </tr>
       </thead>
       <tbody>
@@ -64,9 +70,9 @@
   <p>
     Download:
     <%= link_to "CSV", buildings_path(format: "csv") %> |
-    <%= link_to "Excel", buildings_path(format: "xls") %>
+    <%= link_to "Excel", buildings_path(format: "xlsx") %>
   </p>
-  <%= link_to "Download",buildings_path(format: :xls), class: "btn btn-success" %>
+  <%= link_to "Download",buildings_path(format: :xlsx), class: "btn btn-success" %>
   <%= form_tag import_buildings_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>

@@ -12,6 +12,7 @@ class BuildingsController < ApplicationController
     respond_to do |format|
       format.html
       format.xlsx
+      format.xls
       format.csv{send_data @buildings.to_csv}
     end
   end
